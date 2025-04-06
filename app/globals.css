@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@tailwindcss base;
+@tailwindcss components;
+@tailwindcss utilities;
+
+@layer utilities {
+  .text-blue {
+    color: #101828 !important;
+  }
+  .hover\:text-blue:hover {
+    color: #101828 !important;
+  }
+  .focus\:text-blue:focus {
+    color: #101828 !important;
+  }
+  .active\:text-blue:active {
+    color: #101828 !important;
+  }
+}

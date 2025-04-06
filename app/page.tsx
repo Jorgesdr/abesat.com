@@ -1,0 +1,168 @@
+import Image from "next/image";
+import Link from "next/link";
+
+export default function Home() {
+  return (
+    <>
+      {/* Hero Section */}
+      <section className="bg-background-blues relative py-20 ">
+        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
+          <div className="md:w-1/2 mb-10 md:mb-0">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              Expertos en Accidentes de Tráfico en Granada
+            </h1>
+            <p className="text-xl mb-8">
+              En ABESAT garantizamos la máxima indemnización por tu accidente. Más de 15 años de experiencia defendiendo tus derechos.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link 
+                href="/contacto" 
+                className="bg-transparent border-white border-2 hover:bg-gray-100 hover:text-blue  px-6 py-3 rounded-lg text-lg font-semibold text-center transition-colors"
+              >
+                Consulta Gratuita
+              </Link>
+              <Link 
+                href="/servicios" 
+                className="bg-transparent border-2 border-white hover:text-blue hover:bg-gray-100 px-6 py-3 rounded-lg text-lg font-semibold text-center transition-colors"
+              >
+                Nuestros Servicios
+              </Link>
+              
+            </div>
+            
+          </div>
+          <div className="md:w-1/2 flex justify-center px-4">
+            <div className="relative w-full h-64 md:h-96">
+              <Image 
+                src="/images/556-1-67f0550d519e2.webp" 
+                alt="Abogados de accidentes de tráfico en Granada" 
+                fill
+                className="rounded-lg object-cover shadow-xl"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Servicios */}
+      <section className="py-16 bg-gray-100 dark:bg-gray-800">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Nuestros Servicios</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold mb-4">Accidentes de Tráfico</h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                Reclamación de indemnizaciones por daños personales y materiales en accidentes de coche, moto o atropellos.
+              </p>
+              <Link href="/servicios/accidentes-trafico" className="text-primary-600 dark:text-primary-400 hover:underline">
+                Más información →
+              </Link>
+            </div>
+            
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold mb-4">Lesiones Graves</h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                Defensa legal para víctimas con lesiones graves, incapacidades permanentes o grandes invalideces.
+              </p>
+              <Link href="/servicios/lesiones-graves" className="text-primary-600 dark:text-primary-400 hover:underline">
+                Más información →
+              </Link>
+            </div>
+            
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
+              <h3 className="text-xl font-semibold mb-4">Defensa Penal</h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                Asistencia legal en procedimientos penales derivados de accidentes con víctimas o daños.
+              </p>
+              <Link href="/servicios/defensa-penal" className="text-primary-600 dark:text-primary-400 hover:underline">
+                Más información →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Por qué elegirnos */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">¿Por qué elegir ABESAT?</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <ul className="space-y-6">
+                <li className="flex items-start">
+                  <div className="bg-primary-100 dark:bg-primary-900 p-2 rounded-full mr-4">
+                    <svg className="h-6 w-6 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold">Especialistas en Granada</h3>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      Conocemos a la perfección los juzgados y compañías de seguros de Granada.
+                    </p>
+                  </div>
+                </li>
+                
+                <li className="flex items-start">
+                  <div className="bg-primary-100 dark:bg-primary-900 p-2 rounded-full mr-4">
+                    <svg className="h-6 w-6 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold">Indemnización Máxima</h3>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      Luchamos por conseguir la mayor compensación posible por tu accidente.
+                    </p>
+                  </div>
+                </li>
+                
+                <li className="flex items-start">
+                  <div className="bg-primary-100 dark:bg-primary-900 p-2 rounded-full mr-4">
+                    <svg className="h-6 w-6 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold">Sin adelantar gastos</h3>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      Trabajamos a porcentaje, solo cobramos si ganamos tu caso.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
+            <div className="relative h-64 md:h-96">
+              <Image 
+                src="/images/abogado-accidente-trafico-granada-67f0551156d6d.webp" 
+                alt="Abogados accidentes tráfico Granada" 
+                fill
+                className="rounded-lg object-cover shadow-xl"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-primary-600 text-white py-12">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-6">¿Has tenido un accidente de tráfico en Granada?</h2>
+          <p className="text-xl mb-8 max-w-3xl mx-auto">
+            Contacta con nuestros abogados especialistas para una consulta gratuita y sin compromiso.
+          </p>
+          <Link 
+            href="/contacto" 
+            className="bg-transparent text-white border-2 border-white hover:text-blue hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold inline-block transition-colors"
+          >
+            Contactar Ahora
+          </Link>
+        </div>
+      </section>
+    </>
+  );
+}
