@@ -1,6 +1,8 @@
-
-const config = {
-  
-  
-}
-export default config;
+module.exports = {
+  plugins: [
+    // Otros plugins que utilices
+    '@tailwindcss/forms',
+    '@tailwindcss/typography',
+    // ...
+  ],
+};
