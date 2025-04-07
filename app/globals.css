@@ -17,4 +17,17 @@
   .active\:text-blue:active {
     color: #101828 !important;
   }
+  /*text*/
+  .text-blues {
+    color: #1e29395e !important;
+  }
+  .hover\:text-blues:hover {
+    color: #1e29395e !important;
+  }
+  .focus\:text-blues:focus {
+    color: #1e29395e !important;
+  }
+  .active\:text-blues:active {
+    color: #1e29395e !important;
+  }
 }

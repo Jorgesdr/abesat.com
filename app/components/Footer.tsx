@@ -28,8 +28,8 @@ export default function Footer() {
             <address className="not-italic text-gray-300">
               <p>Calle Recogidas, nº8 4ºB,Centro </p>
               <p>18002 Granada</p>
-              <p className="mt-2">Tel: 696 36 90 30</p>
-              <p>Email: miguelangel@abesat.com</p>
+              <p className="mt-2">Tel: <a href="tel:+34696369030" className="hover:underline">696 36 90 30</a></p>
+              <p>Email: <a className="hover:underline" href="mailto:miguelangel@abesat.com">miguelangel@abesat.com</a></p>
             </address>
           </div>
         </div>

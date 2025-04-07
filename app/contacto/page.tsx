@@ -35,7 +35,7 @@ export default function ContactoPage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold mb-1">Teléfono</h3>
-                    <p className="text-gray-600 dark:text-gray-300">696 36 90 30</p>                    
+                    <p className="text-gray-600 dark:text-gray-300"><a href="tel:+34696369030" className="hover:underline">696 36 90 30</a></p>                    
                   </div>
                 </div>
 
@@ -56,7 +56,7 @@ export default function ContactoPage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold mb-1">Email</h3>
-                    <p className="text-gray-600 dark:text-gray-300">miguelangel@abesat.com</p>
+                    <p className="text-gray-600 dark:text-gray-300"><a className="hover:underline" href="mailto:miguelangel@abesat.com">miguelangel@abesat.com</a></p>
                   </div>
                 </div>
 

@@ -56,7 +56,7 @@ export default function Home() {
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 Reclamación de indemnizaciones por daños personales y materiales en accidentes de coche, moto o atropellos.
               </p>
-              <Link href="/servicios/accidentes-trafico" className="text-primary-600 dark:text-primary-400 hover:underline">
+              <Link href="/servicios/accidentes-trafico-granada" className="text-primary-600 dark:text-primary-400 hover:underline">
                 Más información →
               </Link>
             </div>
@@ -66,7 +66,7 @@ export default function Home() {
               <p className="text-gray-600 dark:text-gray-300 mb-4">
                 Defensa legal para víctimas con lesiones graves, incapacidades permanentes o grandes invalideces.
               </p>
-              <Link href="/servicios/lesiones-graves" className="text-primary-600 dark:text-primary-400 hover:underline">
+              <Link href="/servicios/lesiones" className="text-primary-600 dark:text-primary-400 hover:underline">
                 Más información →
               </Link>
             </div>

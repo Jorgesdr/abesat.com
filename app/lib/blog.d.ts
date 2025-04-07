@@ -5,5 +5,5 @@ export type BlogPost = {
   date: string;
   categories: string[];
   content: string;
-  image?: string;
+  image: string;
 };

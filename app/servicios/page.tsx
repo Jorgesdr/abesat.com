@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { notFound } from 'next/navigation';
 
 export const metadata = {
   title: "Servicios - ABESAT Abogados Accidentes Tráfico Granada",
@@ -18,7 +19,7 @@ export default function ServiciosPage() {
       title: "Accidentes de Tráfico",
       description: "Asesoramiento legal especializado en todo tipo de accidentes de circulación en Granada.",
       icon: "🚗",
-      link: "/servicios/accidentes-trafico",
+      link: "/servicios/accidentes-trafico-granada",
     },
     {
       title: "Lesiones y Daños Corporales",
@@ -45,6 +46,7 @@ export default function ServiciosPage() {
       link: "/servicios/asesoramiento-victimas",
     },
   ];
+  
 
   return (
     <main>
@@ -148,7 +150,7 @@ export default function ServiciosPage() {
           </p>
           <Link 
             href="/contacto" 
-            className="bg-white text-primary-600 hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold inline-block transition-colors"
+            className="bg-transparent border-white border-2 hover:bg-gray-100 hover:text-blue px-8 py-3 rounded-lg text-lg font-semibold inline-block transition-colors"
           >
             Contactar Ahora
           </Link>
