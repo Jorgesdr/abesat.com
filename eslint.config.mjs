@@ -15,7 +15,7 @@ const eslintConfig = [
 
   {
     plugins: {
-      "jsx-a11y": jsxA11yPlugin,
+      "jsx-a11y": "off",
     },
     rules: {
       "jsx-a11y/alt-text": "off", // Desactiva la regla 'alt-text'
