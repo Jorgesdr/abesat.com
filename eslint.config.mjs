@@ -18,7 +18,7 @@ const eslintConfig = [
       "jsx-a11y": "off",
     },
     rules: {
-      "jsx-a11y/alt-text": "off", // Desactiva la regla 'alt-text'
+      "jsx-a11y/alt-text": "off", 
     },
   },
 ];
