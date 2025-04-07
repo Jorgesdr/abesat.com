@@ -1,11 +1,10 @@
-import { BlogPost } from '../../lib/blog';
+import { BlogPost } from '../../lib/definitions';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import RecentPosts from '../../components/RecentPosts';
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 import sanitizeHtml from 'sanitize-html';
 import Link from 'next/link';
-
 
 const blogPosts: BlogPost[] = [
   {
@@ -398,53 +397,14 @@ const blogPosts: BlogPost[] = [
 }
 ];
 
-interface GenerateMetadataProps {
-  params: { slug: string };
-}
-
-interface PageProps {
-  params: { slug: string };
-  searchParams?: Record<string, string | string[] | undefined>;
-}
-
-export async function generateMetadata({ params }: GenerateMetadataProps): Promise<Metadata> {
-  const {slug} = params;
-  const post = blogPosts.find((post) => post.slug === slug);
+type PageProps = {
+  params: Promise<{
+    slug: string;
+  }>;
   
-  if (!post) {
-    return {
-      title: 'Artículo no encontrado',
-      description: 'El artículo solicitado no existe en nuestro blog'
-    };
-  }
+};
 
-  return {
-   metadataBase: new URL('https://www.abesat.com'), // Añade tu dominio real aquí
-    title: `${post.title} | ABESAT Blog`,
-    description: post.description,
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      url: `https://www.abesat.com/blog/${post.slug}`,
-      images: [
-        {
-          url: post.image,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
-      type: 'article',
-      publishedTime: post.date,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.description,
-      images: [post.image],
-    },
-  };
-}
+
 
 function SafeHTML({ html }: { html: string }) {
   const cleanHtml = sanitizeHtml(html, {
@@ -459,8 +419,9 @@ function SafeHTML({ html }: { html: string }) {
   return <div dangerouslySetInnerHTML={{ __html: cleanHtml }} />;
 }
 
-export default function BlogPostPage({ params }: PageProps) {
-  const { slug } = params;
+export default async function BlogPostPage({ params}:PageProps
+) {
+  const { slug } =await params;
   
   // Buscamos el post
   const post = blogPosts.find((post) => post.slug === slug);

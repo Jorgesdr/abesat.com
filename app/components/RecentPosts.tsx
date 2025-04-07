@@ -1,4 +1,4 @@
-import { BlogPost } from '../lib/blog'; // Asegúrate de que la ruta sea correcta
+import { BlogPost } from '../lib/definitions'; // Asegúrate de que la ruta sea correcta
 import Link from 'next/link';
 
 const blogPosts: BlogPost[] = [

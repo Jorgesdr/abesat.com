@@ -1,8 +1,6 @@
-import { BlogPost } from '../lib/definitions';
-import ArticleCard from '../components/ArticleCard';
-import Link from 'next/link';
+import {Metadata} from 'next'
+import { BlogPost } from '../../lib/definitions';
 
-// Datos de ejemplo (luego puedes moverlos a un CMS o archivo JSON)
 const blogPosts: BlogPost[] = [
   {
   slug: 'indemnizaciones-accidentes-trafico',
@@ -15,7 +13,7 @@ const blogPosts: BlogPost[] = [
     <div class="prose max-w-none">
       <h2>Introducción al sistema de indemnizaciones</h2>
       <p>El cálculo de indemnizaciones por accidentes de tráfico en España se rige por el <strong>Baremo de Tráfico</strong>, actualizado en 2021. Este sistema establece criterios objetivos para valorar lesiones, secuelas y daños materiales.</p>
-      
+
       <h2>Factores que determinan tu indemnización</h2>
       <ul>
         <li><strong>Días de curación</strong>: Período desde el accidente hasta el alta médica</li>
@@ -26,7 +24,7 @@ const blogPosts: BlogPost[] = [
 
       <h2>Ejemplo práctico de cálculo</h2>
       <p>Para una víctima con 90 días de curación y una secuela permanente en la columna (5% de incapacidad):</p>
-      <table class="min-w-full bg-white">
+      <table class="min-w-full ">
         <thead>
           <tr>
             <th class="py-2 px-4 border-b">Concepto</th>
@@ -61,10 +59,10 @@ const blogPosts: BlogPost[] = [
         <li>Considera un <strong>informe médico pericial</strong> independiente</li>
       </ol>
 
-      <div class="bg-blue-50 p-4 rounded-lg mt-6">
+      <div class="dark:bg-gray-700  p-4 rounded-lg mt-6">
         <h3 class="text-lg font-semibold">¿Necesitas ayuda con tu reclamación?</h3>
         <p>En ABESAT analizamos tu caso gratuitamente y te asesoramos para obtener la máxima indemnización.</p>
-        <a href="/contacto" class="inline-block mt-2 bg-blue-600 text-white px-4 py-2 rounded">Consulta Gratuita</a>
+        <a href="/contacto" class="inline-block mt-2 hover:text-blue hover:bg-white bg-transparent text-white border-2 px-4 py-2 rounded">Consulta Gratuita</a>
       </div>
     </div>
   `
@@ -87,7 +85,7 @@ const blogPosts: BlogPost[] = [
 
       <h2>Documentación esencial que debes recoger</h2>
       <div class="grid md:grid-cols-2 gap-4 my-6">
-        <div class="bg-gray-50 p-4 rounded-lg">
+        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
           <h3 class="font-semibold">Datos del otro conductor</h3>
           <ul class="list-disc pl-5 mt-2">
             <li>Nombre completo y DNI</li>
@@ -95,7 +93,7 @@ const blogPosts: BlogPost[] = [
             <li>Matrícula del vehículo</li>
           </ul>
         </div>
-        <div class="bg-gray-50 p-4 rounded-lg">
+        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
           <h3 class="font-semibold">Pruebas del accidente</h3>
           <ul class="list-disc pl-5 mt-2">
             <li>Fotos del lugar (mínimo 12 ángulos)</li>
@@ -122,15 +120,8 @@ const blogPosts: BlogPost[] = [
         <li><strong>Contacta con un abogado</strong> especializado en accidentes</li>
       </ol>
 
-      <div class="bg-amber-50 p-4 rounded-lg mt-8">
-        <h3 class="text-lg font-semibold">Descarga nuestra checklist de emergencia</h3>
-        <p>Guarda esta lista en la guantera de tu coche para estar preparado:</p>
-        <a href="/downloads/checklist-accidentes.pdf" class="inline-flex items-center mt-2 text-amber-700 font-medium">
-          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-          </svg>
-          Descargar Checklist (PDF)
-        </a>
+      <div class="p-4 rounded-lg mt-8">
+        <a href="/contacto" class="inline-block mt-2 bg-transparent border-2 border-white hover:text-blue hover:bg-gray-100 px-4 py-2 rounded">Evaluar Mi Caso</a>
       </div>
     </div>
   `
@@ -146,9 +137,9 @@ const blogPosts: BlogPost[] = [
     <div class="prose max-w-none">
       <h2>Principales cambios en el Baremo 2023</h2>
       <p>La última actualización del <strong>Baremo de Tráfico</strong> introduce modificaciones significativas en el cálculo de indemnizaciones:</p>
-      
+
       <div class="overflow-x-auto">
-        <table class="min-w-full bg-white">
+        <table class="min-w-full ">
           <thead>
             <tr>
               <th class="py-3 px-4 border-b">Concepto</th>
@@ -188,7 +179,7 @@ const blogPosts: BlogPost[] = [
         <li>Síndromes ansioso-depresivos</li>
       </ul>
 
-      <div class="bg-purple-50 p-4 rounded-lg my-6">
+      <div class=" p-4 rounded-lg my-6">
         <h3 class="text-lg font-semibold">¿Cómo afecta a tu caso?</h3>
         <p>Las nuevas tablas pueden incrementar tu indemnización entre un 5% y 25% dependiendo de las características de tu accidente.</p>
       </div>
@@ -213,7 +204,7 @@ const blogPosts: BlogPost[] = [
         </div>
       </div>
 
-      <div class="bg-gray-50 p-4 rounded-lg mt-8">
+      <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg mt-8">
         <h3 class="text-lg font-semibold">¿Tuviste un accidente antes de 2023?</h3>
         <p>Podrías beneficiarte de las nuevas tablas si tu caso aún está en proceso de reclamación.</p>
         <a href="/contacto" class="inline-block mt-2 bg-gray-800 text-white px-4 py-2 rounded">Evaluar Mi Caso</a>
@@ -239,15 +230,15 @@ const blogPosts: BlogPost[] = [
         <li>En casos graves, vértigos y trastornos visuales</li>
       </ul>
 
-      <div class="bg-blue-50 p-4 rounded-lg my-6">
+      <div class="dark:bg-gray-700  p-4 rounded-lg my-6">
         <h3 class="text-lg font-semibold">Dato importante</h3>
         <p>El 45% de las lesiones en accidentes de tráfico en Granada son cervicales, según datos de la DGT.</p>
       </div>
 
       <h2>Cómo se valora legalmente</h2>
       <p>El Baremo de Tráfico establece estos criterios:</p>
-      <div class="overflow-x-auto">
-        <table class="min-w-full bg-white">
+      <div class="overflow-x-auto bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+        <table class="min-w-full bg-gray-50 dark:bg-gray-700">
           <thead>
             <tr>
               <th class="py-2 px-4 border-b">Gravedad</th>
@@ -276,7 +267,7 @@ const blogPosts: BlogPost[] = [
       </div>
 
       <h2 class="mt-8">Problemas comunes en la reclamación</h2>
-      <div class="border-l-4 border-red-500 pl-4">
+      <div class="border-l-4 border-red-500 pl-4 mt-6 mb-6">
         <ul class="space-y-3">
           <li><strong>Descredito médico</strong>: Las aseguradoras suelen cuestionar estas lesiones</li>
           <li><strong>Pruebas insuficientes</strong>: Es crucial realizar pruebas de movilidad cervical</li>
@@ -292,10 +283,10 @@ const blogPosts: BlogPost[] = [
         <li>Considera una <strong>valoración por médico forense</strong> independiente</li>
       </ol>
 
-      <div class="bg-green-50 p-4 rounded-lg mt-8">
+      <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg mt-8 border-1 border-white">
         <h3 class="text-lg font-semibold">¿Te han ofrecido una indemnización baja por tu lesión cervical?</h3>
         <p>El 68% de las ofertas iniciales por whiplash son inferiores a lo establecido en el baremo.</p>
-        <a href="/contacto" class="inline-block mt-2 bg-green-600 text-white px-4 py-2 rounded">Revisar Mi Oferta</a>
+        <a href="/contacto" class="inline-block mt-2 bg-transparent border-2 border-white hover:text-blue hover:bg-gray-100 px-4 py-2 rounded">Revisar Mi Oferta</a>
       </div>
     </div>
   `
@@ -308,7 +299,7 @@ const blogPosts: BlogPost[] = [
   categories: ['Defensa Penal', 'Consejos Legales'],
   image: '/images/blog/responsabilidad-penal.webp',
   content: `
-    <div class="prose max-w-none">
+    <div class="max-w-none">
       <h2>¿Cuándo un accidente tiene consecuencias penales?</h2>
       <p>No todos los accidentes derivan en responsabilidad penal. Estos son los casos más comunes:</p>
       <ul>
@@ -318,14 +309,14 @@ const blogPosts: BlogPost[] = [
         <li><strong>Omisión del deber de socorro</strong></li>
       </ul>
 
-      <div class="bg-red-50 p-4 rounded-lg my-6">
+      <div class=" p-4 rounded-lg my-6">
         <h3 class="text-lg font-semibold">Dato alarmante</h3>
         <p>El 23% de los conductores implicados en accidentes graves en Granada dan positivo en alcohol o drogas (DGT 2022).</p>
       </div>
 
       <h2>Posibles consecuencias penales</h2>
       <div class="overflow-x-auto">
-        <table class="min-w-full bg-white">
+        <table class="min-w-full ">
           <thead>
             <tr>
               <th class="py-2 px-4 border-b">Infracción</th>
@@ -389,50 +380,77 @@ const blogPosts: BlogPost[] = [
       <div class="bg-gray-800 text-white p-4 rounded-lg mt-8">
         <h3 class="text-lg font-semibold">¿Estás siendo investigado por un accidente?</h3>
         <p>La primera 48 horas son cruciales para tu defensa. Contacta con un abogado penalista inmediatamente.</p>
-        <a href="tel:+3496369030" class="inline-flex items-center mt-2 bg-white text-gray-800 px-4 py-2 rounded font-medium">
+        <a href="tel:+34696369030" class="inline-flex items-center mt-2 bg-transparent border-2 border-white hover:text-blue hover:bg-gray-100 px-4 py-2 rounded font-medium">
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
           </svg>
-          Llamar Urgencia: 963 69 03 0
+          Llamar Urgencia
         </a>
       </div>
     </div>
   `
 }
 ];
-
-export default function BlogPage() {
-  return (
-    <main className="py-12">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Blog ABESAT</h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Información legal actualizada sobre accidentes de tráfico y cómo defender tus derechos
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-2 justify-center mb-8">
-          <button className="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full">Todos</button>
-          <button className="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full">Indemnizaciones</button>
-          <button className="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full">Consejos Legales</button>
-          <button className="px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full">Defensa Penal</button>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {blogPosts.map((post) => (
-            <ArticleCard key={post.slug} post={post} />
-          ))}
-        </div>
-
-        <div className="text-center">
-          <Link 
-            href="/contacto" 
-            className="bg-transparent border-2 border-white hover:text-blue hover:bg-gray-100 px-6 py-3 rounded-lg text-lg font-semibold inline-block transition-colors"
-          >
-            ¿Necesitas asesoramiento personalizado? Contáctanos.
-          </Link>
-        </div>
-      </div>
-    </main>
-  );
+interface PageProps {
+  params: Promise<{
+    slug: string;
+  }>;
 }
+
+export async function generateMetadata({
+  params}: PageProps
+): Promise<Metadata>{
+ 
+   const {slug}  =await params;
+    
+    const post = blogPosts.find((post) => post.slug === slug);
+    
+
+    if (!post) {
+      return {
+        title: 'Artículo no encontrado',
+        description: 'El artículo solicitado no existe en nuestro blog'
+      };
+    }
+
+    return {
+     metadataBase: new URL('https://www.abesat.com'), // Añade tu dominio real aquí
+      title: `${post.title} | ABESAT Blog`,
+      description: post.description,
+      openGraph: {
+        title: post.title,
+        description: post.description,
+        url: `https://www.abesat.com/blog/${post.slug}`,
+        images: [
+          {
+            url: post.image,
+            width: 1200,
+            height: 630,
+            alt: post.title,
+          },
+        ],
+        type: 'article',
+        publishedTime: post.date,
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: post.title,
+        description: post.description,
+        images: [post.image],
+      },
+    };
+}
+
+
+export default function BlogLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <div >
+      {children}
+    </div>
+  )
+}
+

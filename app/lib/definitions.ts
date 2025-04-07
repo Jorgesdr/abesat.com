@@ -6,13 +6,12 @@ export type ContactForm = {
     mensaje: string;
 }
 
-
 export type BlogPost = {
   slug: string;
   title: string;
   description: string;
   date: string;
   categories: string[];
+  image: string;
   content: string;
-  image?: string;
 };

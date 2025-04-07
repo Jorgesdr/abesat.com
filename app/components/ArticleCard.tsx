@@ -1,4 +1,4 @@
-import { BlogPost } from '../lib/blog';
+import { BlogPost } from '../lib/definitions';
 import Link from 'next/link';
 import Image from 'next/image';
 

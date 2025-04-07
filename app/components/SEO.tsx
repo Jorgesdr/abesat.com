@@ -1,5 +1,10 @@
 import Head from 'next/head'
-export default function SEO({ title, description })  {
+
+interface SEOProps {
+    title: string;
+    description: string;
+  }
+export default function SEO({ title, description }: SEOProps) { 
   return (
     <Head>
       <title>{title}</title>
@@ -10,4 +15,5 @@ export default function SEO({ title, description })  {
       <link rel="canonical" href="https://www.abesat.es/" />
     </Head>
   )
+  
 }
