@@ -2,11 +2,19 @@
 
 import { useTheme } from "next-themes";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
+import { useEffect, useState } from 'react';
 
 export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
-  
+   const [mounted, setMounted] = useState(false);
+   
+  useEffect(() => {
+      setMounted(true);
+    }, []);
 
+    if (!mounted) {
+      return null; // No renderices nada en el servidor
+    }
   return (
     <>
     
