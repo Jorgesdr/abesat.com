@@ -1,9 +1,11 @@
 export type ContactForm = {
-  nombre: string;
+    nombre: string;
     email: string;
     telefono: string;
     asunto: string;
     mensaje: string;
+    status: string;
+    id: string;
 }
 
 export type BlogPost = {

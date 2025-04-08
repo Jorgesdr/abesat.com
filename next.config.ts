@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['abesat.es'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'abesat.es',
+      },
+    ],
   },
   async headers() {
     return [

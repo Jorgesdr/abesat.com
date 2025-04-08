@@ -149,7 +149,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="bg-primary-600 text-white py-12">
+      <section className="bg-primary-600 text-gray-600 dark:text-white py-12">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">¿Has tenido un accidente de tráfico en Granada?</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
@@ -157,7 +157,7 @@ export default function Home() {
           </p>
           <Link 
             href="/contacto" 
-            className="bg-transparent text-white border-2 border-white hover:text-blue hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold inline-block transition-colors"
+            className="bg-transparent text-gray-600 dark:text-white border-2 border-gray hover:text-gray hover:bg-white dark:border-white hover:text-blue hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold inline-block transition-colors"
           >
             Contactar Ahora
           </Link>

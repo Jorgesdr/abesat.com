@@ -22,7 +22,7 @@ export default function Header() {
     <header className={`sticky top-0 z-50 ${theme === 'dark' ? 'bg-gray-800 text-background-blues' : 'bg-background-light'} shadow-md`}>
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center">
-          <Image src="/images/abesatIco.webp" alt="Abesat" width={100} height={100} className="h-8 w-auto md:h-10"/>
+          <Image src="/images/abesatico.webp" alt="Abesat" width={100} height={100} className="h-8 w-auto md:h-10"/>
         </Link>
         
         <nav className="hidden md:flex space-x-8">
@@ -37,7 +37,7 @@ export default function Header() {
           </Link>
           <Link href="/contacto" className="text-gray-300 hover:text-gray-500 dark:hover:text-primary-400 transition-colors">
             Contacto
-          </Link>          
+          </Link>                 
         </nav>
         
         <div className="flex items-center space-x-4">
