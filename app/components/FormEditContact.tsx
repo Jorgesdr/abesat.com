@@ -56,8 +56,7 @@ export default function FormEditContact({contact}: {contact: ContactForm}) {
                 
                     <button type='submit' className='bg-blue-500 text-white hover:bg-blue-300 px-4 py-2 rounded hover:cursor-pointer'>Actualizar</button>
                 </div>         
-            </div>
-        
+            </div>        
         </form>
     )
 }
