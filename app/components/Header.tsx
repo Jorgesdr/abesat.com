@@ -1,25 +1,14 @@
-"use client";
+
 
 import Link from "next/link";
-import { useTheme } from "next-themes";
 import Image from 'next/image'
-import { useEffect, useState } from "react";
-import ThemeSwitcher from "./ThemeSwitcher";
+import ThemeSwitcher from "../theme/ThemeSwitcher";
 
 export default function Header() {
-  const [mounted, setMounted] = useState(false);
-  const { theme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
+  
 
   return (
-    <header className={`sticky top-0 z-50 ${theme === 'dark' ? 'bg-gray-800 text-background-blues' : 'bg-background-light'} shadow-md`}>
+    <header className={`sticky top-0 z-50  'dark:bg-gray-800 dark:text-background-blues'  'bg-background-light' shadow-md`}>
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center">
           <Image src="/images/abesatico.webp" alt="Abesat" width={100} height={100} className="h-8 w-auto md:h-10"/>

@@ -9,7 +9,7 @@ export default function LesionesPage() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
+      <section className="relative bg-gradient-to-r from-primary-600 to-primary-800 dark:text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Lesiones por Accidentes</h1>
           <p className="text-xl max-w-3xl mx-auto">
@@ -73,7 +73,7 @@ export default function LesionesPage() {
                 </p>
                 <Link 
                   href="/contacto" 
-                  className="bg-transparent border-white border-2 text-white hover:bg-gray-50 hover:text-blue px-6 py-3 rounded-lg font-medium inline-block w-full text-center"
+                  className="bg-transparent border-white border-2 dark:text-white hover:bg-gray-50 hover:text-blue px-6 py-3 rounded-lg font-medium inline-block w-full text-center"
                 >
                   Consulta Gratuita
                 </Link>
@@ -95,7 +95,7 @@ export default function LesionesPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 bg-primary-700 text-white">
+      <section className="py-16 bg-primary-700 dark:text-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">Casos de Éxito</h2>
           
@@ -115,7 +115,7 @@ export default function LesionesPage() {
               }
             ].map((testimonial, index) => (
               <div key={index} className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md">
-                <p className="text-white italic mb-4">"{testimonial.quote}"</p>
+                <p className="dark:text-white italic mb-4">"{testimonial.quote}"</p>
                 <p className="font-medium">— {testimonial.author}</p>
               </div>
             ))}

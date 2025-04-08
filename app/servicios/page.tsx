@@ -51,7 +51,7 @@ export default function ServiciosPage() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
+      <section className="relative bg-gradient-to-r from-primary-600 to-primary-800 dark:text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Nuestros Servicios</h1>
           <p className="text-xl max-w-3xl mx-auto">
@@ -142,7 +142,7 @@ export default function ServiciosPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-primary-600 text-white py-12">
+      <section className="bg-primary-600 dark:text-white py-12">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">¿Necesitas un abogado especializado en accidentes?</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
@@ -150,7 +150,7 @@ export default function ServiciosPage() {
           </p>
           <Link 
             href="/contacto" 
-            className="bg-transparent border-white border-2 hover:bg-gray-100 hover:text-blue px-8 py-3 rounded-lg text-lg font-semibold inline-block transition-colors"
+            className="bg-transparent dark:border-white border-2 hover:bg-gray-300 hover:text-blue px-8 py-3 rounded-lg text-lg font-semibold inline-block transition-colors"
           >
             Contactar Ahora
           </Link>

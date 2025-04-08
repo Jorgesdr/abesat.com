@@ -10,7 +10,7 @@ export default function IndemnizacionesPage() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
+      <section className="relative bg-gradient-to-r from-primary-600 to-primary-800 dark:text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Reclamación de Indemnizaciones</h1>
           <p className="text-xl max-w-3xl mx-auto">
@@ -60,7 +60,7 @@ export default function IndemnizacionesPage() {
                 </p>
                 <Link 
                   href="/contacto" 
-                  className="bg-transparent border-white border-2 text-white hover:bg-gray-50 hover:text-blue px-6 py-3 rounded-lg font-medium inline-block w-full text-center"
+                  className="bg-transparent dark:border-white border-2 dark:text-white hover:bg-gray-50 hover:text-blue px-6 py-3 rounded-lg font-medium inline-block w-full text-center"
                 >
                   Contactar Ahora
                 </Link>

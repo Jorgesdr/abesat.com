@@ -12,9 +12,9 @@ export default function ContactoPage() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
+      <section className="relative bg-gradient-to-r from-primary-600 to-primary-800  py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Contacta con Nosotros</h1>
+          <h1 className="text-4xl dark:text-white md:text-5xl font-bold mb-6">Contacta con Nosotros</h1>
           <p className="text-xl max-w-3xl mx-auto">
             Estamos aquí para ayudarte. Rellena el formulario o contáctanos directamente.
           </p>
@@ -72,7 +72,7 @@ export default function ContactoPage() {
               </div>
             </div>
 
-            <div>
+            <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md  ">
               <h2 className="text-3xl font-bold mb-8">Formulario de Contacto</h2>
                 <FormContact/>              
             </div>
@@ -81,7 +81,7 @@ export default function ContactoPage() {
       </section>
 
       {/* Mapa */}
-       <section className="bg-gray-100 dark:bg-gray-900 py-12">
+       <section className="bg-gray-50 dark:bg-gray-900 py-12">
   <div className="container mx-auto px-4">
     <h2 className="text-3xl font-bold mb-8 text-center">Nuestra Ubicación</h2>
     <div className="rounded-lg overflow-hidden shadow-lg">

@@ -9,7 +9,7 @@ export default function DefensaPenalPage() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
+      <section className="relative bg-gradient-to-r from-primary-600 to-primary-800 dark:text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Defensa en Procedimientos Penales</h1>
           <p className="text-xl max-w-3xl mx-auto">
@@ -71,7 +71,7 @@ export default function DefensaPenalPage() {
                 </p>
                 <Link 
                   href="/contacto" 
-                  className="bg-transparent border-white border-2 text-white hover:bg-gray-50 hover:text-blue px-6 py-3 rounded-lg font-medium inline-block w-full text-center"
+                  className="bg-transparent border-white border-2 dark:text-white hover:bg-gray-50 hover:text-blue px-6 py-3 rounded-lg font-medium inline-block w-full text-center"
                 >
                   Defensa Inmediata
                 </Link>
@@ -91,7 +91,7 @@ export default function DefensaPenalPage() {
       </section>
 
       {/* Process Section */}
-      <section className="py-16 bg-primary-700 text-white">
+      <section className="py-16 bg-primary-700 dark:text-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">Fases del Procedimiento Penal</h2>
           
@@ -130,7 +130,7 @@ export default function DefensaPenalPage() {
                   className={`relative ${index % 2 === 0 ? 'lg:text-right lg:pr-8' : 'lg:text-left lg:pl-8 lg:mt-20'}`}
                 >
                   <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md">
-                    <div className={`absolute top-6 w-8 h-8 rounded-full bg-gray-700 text-white 
+                    <div className={`absolute top-6 w-8 h-8 rounded-full bg-gray-700 dark:text-white 
         flex items-center justify-center font-bold ${index % 2 === 0 ? 
           'lg:-right-4 lg:left-auto -left-4' 
           : 
@@ -139,7 +139,7 @@ export default function DefensaPenalPage() {
                       {index + 1}
                     </div>
                     <h3 className="text-xl font-semibold mb-2">{paso.title}</h3>
-                    <p className="text-white">{paso.description}</p>
+                    <p className="dark:text-white">{paso.description}</p>
                   </div>
                 </div>
               ))}

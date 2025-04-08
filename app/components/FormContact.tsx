@@ -121,7 +121,7 @@ return (
 
                 <button 
                   type="submit" 
-                  className="bg-primary-600 border-white border-2 hover:bg-gray-100 hover:cursor-pointer hover:text-blue dark:bg-primary-500 dark:hover:bg-primary-600 text-white px-6 py-3 rounded-lg text-lg font-semibold w-full transition-colors"
+                  className="bg-gray-50 dark:border-white border-2 hover:bg-gray-300 hover:cursor-pointer hover:text-blue dark:bg-gray-500 dark:hover:bg-gray-600 dark:text-white px-6 py-3 rounded-lg text-lg font-semibold w-full transition-colors"
                 >
                   {state.success ? '¡Mensaje Enviado!' : 'Enviar Mensaje'}
                 </button>

@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { ThemeProvider } from "./components/ThemeProvider";
+import ThemeProvider from "./theme/theme-provider";
 import Header from './components/Header'
 import Footer from './components/Footer'
-import {cookies} from 'next/headers'
+
+import BannerCookies from './components/BannerCookies';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -37,15 +38,15 @@ export default  async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const cookiesStore = await cookies()
-  const theme = cookiesStore.get('theme')?.value || 'light'
+  
   return (
-    <html lang="es" className={theme} style={{colorScheme:theme}}>
+    <html lang="es" suppressHydrationWarning>
       <body className={`${inter.className} bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100`}>
-       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+       <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Header />
           <main className="min-h-[calc(100vh-160px)]">{children}</main>
           <Footer />
+          <BannerCookies />
         </ThemeProvider>
       </body>
     </html>
