@@ -7,7 +7,7 @@ import { z} from 'zod';
 import postgres from 'postgres';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import {ContactForm} from './definitions';
+import {ContactForm,State} from './definitions';
 
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
@@ -24,18 +24,6 @@ const contactFormSchema = z.object({
     status:z.enum(['no', 'si']),
 });
 
-export type State = {
-  errors?: {
-    nombre?: string[];
-    email?: string[];
-    telefono?: string[];
-    asunto?: string[];
-    mensaje?: string[];
-    status?: string[];
-  };
-  message?: string | null;
-  success?: boolean;
-};
 
 const CreateContact=contactFormSchema.omit({id:true,status:true});
 const UpdateContact=contactFormSchema.omit({id:true,mensaje:true,asunto:true});

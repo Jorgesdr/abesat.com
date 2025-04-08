@@ -73,7 +73,7 @@ export default function LesionesPage() {
                 </p>
                 <Link 
                   href="/contacto" 
-                  className="bg-transparent border-white border-2 dark:text-white hover:bg-gray-50 hover:text-blue px-6 py-3 rounded-lg font-medium inline-block w-full text-center"
+                  className="bg-transparent dark:border-white border-2 dark:text-white hover:bg-gray-300 hover:text-blue px-6 py-3 rounded-lg font-medium inline-block w-full text-center"
                 >
                   Consulta Gratuita
                 </Link>

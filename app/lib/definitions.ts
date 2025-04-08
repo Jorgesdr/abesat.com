@@ -17,3 +17,16 @@ export type BlogPost = {
   image: string;
   content: string;
 };
+
+export type State = {
+  errors?: {
+    nombre?: string[];
+    email?: string[];
+    telefono?: string[];
+    asunto?: string[];
+    mensaje?: string[];
+    status?: string[];
+  };
+  message?: string | null;
+  success?: boolean;
+};

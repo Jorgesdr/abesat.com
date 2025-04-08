@@ -1,14 +1,28 @@
 'use client'
 
 import Link from "next/link"
-import {ContactForm} from "../lib/definitions"
-import {updateContact, State} from "../lib/actions"
+import {ContactForm,State} from "../lib/definitions"
+import {updateContact } from "../lib/actions"
 import { useActionState } from "react"
 
 export default function FormEditContact({contact}: {contact: ContactForm}) {
     const initialState:State={message:null,errors:{}}  
-    const updateContactId=updateContact.bind(null,contact.id)    
-    const [state,formAction] = useActionState(updateContactId,initialState)
+    const updateContactWithId = async (
+    prevState: State, // El estado previo que contiene errores, mensaje, etc.
+    formData: FormData // Los datos del formulario que serán procesados
+    ): Promise<State> => {
+    // Lógica de actualización
+    await updateContact(contact.id, prevState, formData); // Tu lógica de acción aquí
+
+    // Retornar un nuevo estado con los cambios apropiados
+    return {
+        ...prevState, // Mantén el estado previo
+        errors: {}, // Limpia los errores si ya no existen
+        message: 'Formulario actualizado correctamente',
+        success: true // Indica si la actualización fue exitosa
+    };
+    };  
+    const [state,formAction] = useActionState(updateContactWithId,initialState)
 
     
     return(

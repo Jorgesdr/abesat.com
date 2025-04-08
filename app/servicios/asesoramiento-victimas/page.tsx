@@ -9,7 +9,7 @@ export default function AsesoramientoVictimasPage() {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
+      <section className="relative bg-gradient-to-r from-primary-600 to-primary-800 dark:text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Asesoramiento a Víctimas</h1>
           <p className="text-xl max-w-3xl mx-auto">
@@ -73,7 +73,7 @@ export default function AsesoramientoVictimasPage() {
                 </p>
                 <Link 
                   href="/contacto" 
-                  className="bg-transparent border-white border-2 text-white hover:bg-gray-50 hover:text-blue px-6 py-3 rounded-lg font-medium inline-block w-full text-center"
+                  className="bg-transparent dark:border-white border-2 dark:text-white hover:bg-gray-300 hover:text-blue px-6 py-3 rounded-lg font-medium inline-block w-full text-center"
                 >
                   Habla con Nosotros
                 </Link>
@@ -94,7 +94,7 @@ export default function AsesoramientoVictimasPage() {
       </section>
 
       {/* Resources Section */}
-      <section className="py-16 bg-primary-700 text-white">
+      <section className="py-16 bg-primary-700 dark:text-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold mb-12 text-center">Recursos para Víctimas</h2>
           
@@ -126,8 +126,8 @@ export default function AsesoramientoVictimasPage() {
                 href={resource.link}
                 className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-white font-semibold mb-2">{resource.title}</h3>
-                <p className="text-sm text-gray-300">{resource.description}</p>
+                <h3 className="dark:text-white font-semibold mb-2">{resource.title}</h3>
+                <p className="text-sm text-gray-500">{resource.description}</p>
               </Link>
             ))}
           </div>

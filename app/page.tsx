@@ -17,13 +17,13 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
                 href="/contacto" 
-                className="bg-transparent border-white border-2 hover:bg-gray-100 hover:text-blue  px-6 py-3 rounded-lg text-lg font-semibold text-center transition-colors"
+                className="bg-transparent dark:border-white border-2 dark:text-white hover:bg-gray-300 hover:text-blue px-6 py-3 rounded-lg font-medium inline-block w-full text-center"
               >
                 Consulta Gratuita
               </Link>
               <Link 
                 href="/servicios" 
-                className="bg-transparent border-2 border-white hover:text-blue hover:bg-gray-100 px-6 py-3 rounded-lg text-lg font-semibold text-center transition-colors"
+                className="bg-transparent dark:border-white border-2 dark:text-white hover:bg-gray-300 hover:text-blue px-6 py-3 rounded-lg font-medium inline-block w-full text-center"
               >
                 Nuestros Servicios
               </Link>
@@ -157,7 +157,7 @@ export default function Home() {
           </p>
           <Link 
             href="/contacto" 
-            className="bg-transparent text-gray-600 dark:text-white border-2 border-gray hover:text-gray hover:bg-white dark:border-white hover:text-blue hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold inline-block transition-colors"
+            className="bg-transparent text-gray-600 dark:text-white border-2 border-gray hover:text-gray hover:bg-gray-300 dark:border-white hover:text-blue hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold inline-block transition-colors"
           >
             Contactar Ahora
           </Link>

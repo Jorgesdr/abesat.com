@@ -60,7 +60,7 @@ export default function IndemnizacionesPage() {
                 </p>
                 <Link 
                   href="/contacto" 
-                  className="bg-transparent dark:border-white border-2 dark:text-white hover:bg-gray-50 hover:text-blue px-6 py-3 rounded-lg font-medium inline-block w-full text-center"
+                  className="bg-transparent dark:border-white border-2 dark:text-white hover:bg-gray-300 hover:text-blue px-6 py-3 rounded-lg font-medium inline-block w-full text-center"
                 >
                   Contactar Ahora
                 </Link>
@@ -101,7 +101,7 @@ export default function IndemnizacionesPage() {
             ].map((item, index) => (
               <div key={index} className="border-b border-gray-200 pb-6">
                 <h3 className="text-xl font-semibold mb-2">{item.question}</h3>
-                <p className="text-gray-300">{item.answer}</p>
+                <p className="text-gray-500">{item.answer}</p>
               </div>
             ))}
           </div>
