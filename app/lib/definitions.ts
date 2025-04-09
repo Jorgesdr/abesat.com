@@ -30,3 +30,8 @@ export type State = {
   message?: string | null;
   success?: boolean;
 };
+
+export type User = {
+  email: string;
+  password: string;
+};

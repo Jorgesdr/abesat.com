@@ -8,6 +8,8 @@ import postgres from 'postgres';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import {ContactForm,State} from './definitions';
+import { signIn } from '@/auth';
+import { AuthError } from 'next-auth';
 
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
@@ -132,13 +134,21 @@ export async function deleteContact(id: string) {
 }
 
 
-export async function auth(user: string, password: string) {
+export async function authenticate(prevState: string | undefined,
+  formData: FormData,) {
+    
     try {
-        const getUser = await sql`SELECT * FROM users WHERE user = ${user} AND password = ${password}`;
-        return getUser[0];
+        await signIn('credentials', formData);
     } catch (error) {
-        console.error('Database Error:', error);
-        throw new Error('Failed to fetch auth data.');
+        if (error instanceof AuthError) {
+      switch (error.type) {
+        case 'CredentialsSignin':
+          return 'Invalid credentials.';
+        default:
+          return 'Something went wrong.';
+      }
+    }
+    throw error;
         
     }
 }

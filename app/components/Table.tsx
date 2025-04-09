@@ -1,5 +1,6 @@
 import { UpdateContact,DeleteContact } from "../components/Buttons";
 import { fetchAllContacts } from "../lib/data";
+import { signOut } from "@/auth";
 
 export default async function Table() {
     const contacts = await fetchAllContacts();  
@@ -8,7 +9,22 @@ export default async function Table() {
             return phone.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3');
         };
     return(
-        <table className="w-full mt-6 border-1  ">
+        <div>
+            {
+
+            /* <div>
+                <h1 className="text-2xl font-bold text-gray-800 dark:text-white">Contactos</h1>
+                <form action={async () => {'use client'; await signOut({redirectTo:'/'})}} className="flex justify-end mt-4">
+                    <button                    
+                        className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+                    >
+                        Cerrar sesión
+                    </button>
+                </form>
+            </div> */
+            }
+        
+            <table className="w-full mt-6 border-1  ">
                 <thead className="bg-gray-800 text-white">
                     <tr>
                         <th className="p-3 text-center">Nombre</th>
@@ -72,5 +88,6 @@ export default async function Table() {
                     
                 </tbody>
             </table>
+        </div>
     )
 }
