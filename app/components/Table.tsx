@@ -12,16 +12,16 @@ export default async function Table() {
         <div>
             {
 
-            /* <div>
-                <h1 className="text-2xl font-bold text-gray-800 dark:text-white">Contactos</h1>
-                <form action={async () => {'use client'; await signOut({redirectTo:'/'})}} className="flex justify-end mt-4">
+            <div>
+                
+                <form action={async () => {'use server'; await signOut({redirectTo:'/'})}} className="flex justify-end mt-4">
                     <button                    
-                        className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+                        className="mt-4 px-4 py-2 bg-red-400 hover:cursor-pointer hover:bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
                     >
                         Cerrar sesión
                     </button>
                 </form>
-            </div> */
+            </div>
             }
         
             <table className="w-full mt-6 border-1  ">
@@ -69,7 +69,7 @@ export default async function Table() {
                             </a>
                         </td>
                         <td className="p-3">{contact.asunto}</td>
-                        <td className="p-3 max-w-xs truncate">{contact.mensaje}</td>
+                        <td className="p-3 max-w-xs ">{contact.mensaje}</td>
                         <td className="p-3">
                             <span className={`px-2 py-1 rounded-full text-xs ${
                                 contact.status === "no" ? "bg-red-100 text-red-800" : "bg-green-100 text-green-800"

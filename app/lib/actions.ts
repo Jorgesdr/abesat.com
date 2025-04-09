@@ -143,7 +143,7 @@ export async function authenticate(prevState: string | undefined,
         if (error instanceof AuthError) {
       switch (error.type) {
         case 'CredentialsSignin':
-          return 'Invalid credentials.';
+          return 'Usuario o contraseña incorrecto.';
         default:
           return 'Something went wrong.';
       }
