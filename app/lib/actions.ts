@@ -130,3 +130,15 @@ export async function deleteContact(id: string) {
       
     }
 }
+
+
+export async function auth(user: string, password: string) {
+    try {
+        const getUser = await sql`SELECT * FROM users WHERE user = ${user} AND password = ${password}`;
+        return getUser[0];
+    } catch (error) {
+        console.error('Database Error:', error);
+        throw new Error('Failed to fetch auth data.');
+        
+    }
+}
