@@ -1,6 +1,20 @@
 'use client';
+import { useState } from 'react';
 
 export default function BannerCookies() {
+    const [isVisible, setIsVisible] = useState(true);
+
+    const handleAccept = () => {
+        setIsVisible(false);
+    };
+
+    const handleReject = () => {
+        setIsVisible(false);
+    };
+
+    if (!isVisible) {
+        return null; // Si el estado es false, no se renderiza el banner
+    }
     return(
         <div className="fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 flex justify-between items-center z-50">
             <div className="grid  gap-2 grid-cols-[4fr_1fr]">
@@ -10,8 +24,10 @@ export default function BannerCookies() {
             
                 </div>
                 <div className="text-center">
-                    <button className="bg-gray-700 text-white p-2 rounded-lg hover:bg-gray-600 transition-colors m-2 hover:cursor-pointer">Aceptar</button>
-                    <button className="bg-gray-700 text-white p-2 rounded-lg hover:bg-gray-600 transition-colors m-2 hover:cursor-pointer">Rechazar</button>
+                    <button onClick={handleAccept} className="bg-gray-700 text-white p-2 rounded-lg hover:bg-gray-600 transition-colors m-2 hover:cursor-pointer">Aceptar</button>
+                    {/* 
+                        <button className="bg-gray-700 text-white p-2 rounded-lg hover:bg-gray-600 transition-colors m-2 hover:cursor-pointer">Rechazar</button>
+                     */}
                 </div>
             </div>            
         </div>
