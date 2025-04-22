@@ -8,7 +8,7 @@ const blogPosts: BlogPost[] = [
   slug: 'indemnizaciones-accidentes-trafico',
   title: 'Cómo calcular tu indemnización por accidente de tráfico',
   description: 'Guía completa para entender cómo se calculan las indemnizaciones en accidentes de circulación en Granada.',
-  date: '2023-11-15',
+  date: '2025-04-22',
   categories: ['Indemnizaciones', 'Accidentes'],
   image: '/images/blog/indemnizaciones.webp',
   content: `
@@ -73,7 +73,7 @@ const blogPosts: BlogPost[] = [
   slug: 'que-hacer-accidente',
   title: 'Qué hacer después de un accidente de tráfico: Guía paso a paso',
   description: 'Pasos esenciales que debes seguir inmediatamente después de sufrir un accidente de circulación.',
-  date: '2023-10-28',
+  date: '2025-03-28',
   categories: ['Consejos Legales'],
   image: '/images/blog/accidente.webp',
   content: `
@@ -139,7 +139,7 @@ const blogPosts: BlogPost[] = [
   slug: 'baremo-indemnizaciones-2023',
   title: 'Nuevo Baremo de Indemnizaciones 2023: ¿Qué ha cambiado?',
   description: 'Análisis completo de las modificaciones en el sistema de cálculo de indemnizaciones por accidentes.',
-  date: '2023-09-10',
+  date: '2025-02-10',
   categories: ['Indemnizaciones', 'Actualidad Legal'],
   image: '/images/blog/calculo.webp',
   content: `
@@ -225,7 +225,7 @@ const blogPosts: BlogPost[] = [
   slug: 'lesiones-whiplash',
   title: 'Lesiones por latigazo cervical: Mitos y realidades legales',
   description: 'Todo lo que necesitas saber sobre la reclamación de indemnizaciones por lesiones cervicales.',
-  date: '2023-08-22',
+  date: '2025-01-22',
   categories: ['Lesiones', 'Indemnizaciones'],
   image: '/images/blog/latigazo-cervical.webp',
   content: `
@@ -304,7 +304,7 @@ const blogPosts: BlogPost[] = [
   slug: 'defensa-penal-accidentes',
   title: 'Responsabilidad penal en accidentes de tráfico: Lo que debes saber',
   description: 'Guía sobre las consecuencias penales que pueden derivarse de un accidente de circulación.',
-  date: '2023-07-05',
+  date: '2025-01-05',
   categories: ['Defensa Penal', 'Consejos Legales'],
   image: '/images/blog/responsabilidad-penal.webp',
   content: `
