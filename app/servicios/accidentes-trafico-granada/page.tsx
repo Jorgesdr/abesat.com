@@ -1,17 +1,46 @@
 import Link from "next/link";
+import Head from 'next/head'
 
-export const metadata = {
+
+
+const oldmetadata = {
   title: "Accidentes de Tráfico en Granada | ABESAT Abogados",
   description: "Abogados especialistas en accidentes de tráfico en Granada. Asistencia legal inmediata.",
 };
 
+export const metadata = {
+  title: "Abogados Tráfico Granada -  Especialistas en Accidentes | ABESAT",
+  description: "¿Buscas abogados de tráfico en Granada? En ABESAT Abogados te ayudamos con accidentes, indemnizaciones y defensa penal. Consulta gratuita.",
+};
+
 export default function AccidentesTraficoPage() {
+  <Head>
+  <script type="application/ld+json" dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LegalService",
+      "name": "ABESAT Abogados",
+      "image": "https://abesat.com/images/abesatico.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Calle Recogidas 8",
+        "addressLocality": "Granada",
+        "addressRegion": "GR",
+        "postalCode": "18009",
+        "addressCountry": "ES"
+      },
+      "url": "https://abesat.com/accidentes-trafico-granada",
+      "telephone": "+34 600 000 000",
+      "priceRange": "€€"
+    })
+  }} />
+</Head>
   return (
     <main>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-primary-600 to-primary-800 dark:text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Accidentes de Tráfico en Granada</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Abogados de Tráfico en Granada - Expertos en Accidentes</h1>
           <p className="text-xl max-w-3xl mx-auto">
             Asistencia legal especializada para víctimas de accidentes de circulación
           </p>
@@ -23,12 +52,11 @@ export default function AccidentesTraficoPage() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-12">
             <div className="lg:w-2/3 bg-gray-50 dark:bg-gray-700 p-6 rounded-lg">
-              <h2 className="text-3xl font-bold mb-6">Expertos en Accidentes de Tráfico</h2>
+              <h2 className="text-3xl font-bold mb-6">Abogados Expertos en Accidentes de Tráfico</h2>
               
               <div className="prose max-w-none">
                 <p className="text-lg mb-4">
-                  En ABESAT Abogados contamos con un equipo especializado en derecho de tráfico y accidentes de circulación 
-                  en Granada. Ofrecemos asesoramiento integral desde el primer momento tras el accidente.
+                  En ABESAT Abogados somos <strong>abogados de tráfico en Granada</strong> con amplia experiencia en accidentes de circulación. Ofrecemos asesoría legal especializada desde el primer momento.
                 </p>
                 
                 <h3 className="text-2xl font-semibold mt-8 mb-4">Tipos de accidentes que atendemos</h3>
@@ -59,7 +87,7 @@ export default function AccidentesTraficoPage() {
                   <li>Tome fotografías del lugar</li>
                   <li>Acuda a un centro médico aunque no tenga síntomas</li>
                   <li>Contacte con un abogado especializado</li>
-                </ol>
+                </ol>                
               </div>
             </div>
             
@@ -84,6 +112,14 @@ export default function AccidentesTraficoPage() {
                     <li><Link href="/servicios/defensa-penal" className="text-primary-600 hover:underline">Defensa en Casos Penales</Link></li>
                   </ul>
                 </div>
+                <div className="mt-8">
+                <h4 className="font-medium mb-3">También buscan:</h4>
+                <ul className="space-y-2 list-disc pl-4 text-sm">
+                  <li><Link href="/servicios/asesoramiento-victimas" className="hover:underline">Abogados especialistas en tráfico Granada</Link></li>                  
+                  <li><Link href="/servicios/indemnizaciones" className="hover:underline">Reclamación por accidente de tráfico Granada</Link></li>
+                  <li><Link href="/servicios/lesiones" className="hover:underline">Abogados para siniestros viales Granada</Link></li>
+                </ul>
+              </div>
               </div>
             </div>
           </div>
@@ -109,6 +145,20 @@ export default function AccidentesTraficoPage() {
           </div>
         </div>
       </section>
+     {/*  <section>
+        <div className="container mx-auto px-4 py-16">
+          <h2 className="text-3xl font-bold mb-6 text-center">¿Por qué elegirnos?</h2>
+          <p className="text-lg text-center max-w-2xl mx-auto mb-8">
+            En ABESAT Abogados, nos comprometemos a ofrecerte la mejor asistencia legal. Nuestro equipo de abogados especializados en accidentes de tráfico en Granada está aquí para ayudarte a obtener la indemnización que mereces.
+          </p>
+          <Link 
+            href="/contacto" 
+            className="bg-primary-600 text-white px-6 py-3 rounded-lg font-medium inline-block text-center"
+          >
+            Solicita tu consulta gratuita
+          </Link>
+        </div>
+      </section> */}
     </main>
   );
 }

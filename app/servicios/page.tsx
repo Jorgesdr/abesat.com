@@ -3,8 +3,8 @@ import Image from "next/image";
 import { notFound } from 'next/navigation';
 
 export const metadata = {
-  title: "Servicios - ABESAT Abogados Accidentes Tráfico Granada",
-  description: "Servicios especializados en accidentes de tráfico en Granada. Indemnizaciones, defensa legal y asesoramiento personalizado.",
+  title: "Abogado Accidente Tráfico Granada | Especialistas en Indemnizaciones | ABESAT",
+  description: "Abogados especializados en accidentes de tráfico en Granada. Reclamamos tu indemnización máxima. Consulta gratuita con abogado de tráfico en Granada.",
 };
 
 export default function ServiciosPage() {
