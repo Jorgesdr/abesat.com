@@ -1,18 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Abogados Accidentes Tráfico Granada | ABESAT Abogados",
+  description: "Abogados especialistas en accidentes de tráfico en Granada. Reclamaciones, indemnizaciones y defensa penal. Consulta gratuita.",
+};
+
 export default function Home() {
   return (
     <>
       {/* Hero Section */}
       <section className="bg-background-blues relative py-20 ">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-10 md:mb-0">
+          <div className="md:w-1/2 mb-10 md:mb-0">           
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Expertos en Accidentes de Tráfico en Granada
+              Abogados Accidentes Tráfico Granada - Expertos en Indemnizaciones
             </h1>
             <p className="text-xl mb-8">
-              En ABESAT garantizamos la máxima indemnización por tu accidente. Más de 15 años de experiencia defendiendo tus derechos.
+                En ABESAT Abogados somos especialistas en accidentes de tráfico en Granada. Luchamos por tus derechos con un equipo experto en reclamaciones e indemnizaciones. Confía en abogados de accidentes tráfico Granada con más de 15 años de experiencia.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
@@ -35,7 +40,7 @@ export default function Home() {
             <div className="relative w-full h-64 md:h-96">
               <Image 
                 src="/images/556-1-67f0550d519e2.webp" 
-                alt="Abogados de accidentes de tráfico en Granada" 
+                alt="Abogados accidentes tráfico Granada" 
                 fill
                 className="rounded-lg object-cover shadow-xl"
                 priority
@@ -48,7 +53,7 @@ export default function Home() {
       {/* Servicios */}
       <section className="py-16 bg-gray-100 dark:bg-gray-800">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Nuestros Servicios</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Servicios de Abogados para Accidentes de Tráfico en Granada</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
@@ -151,18 +156,20 @@ export default function Home() {
       {/* CTA */}
       <section className="bg-primary-600 text-gray-600 dark:text-white py-12">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">¿Has tenido un accidente de tráfico en Granada?</h2>
+          <h2 className="text-3xl font-bold mb-6">¿Buscas abogados accidentes tráfico Granada?</h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Contacta con nuestros abogados especialistas para una consulta gratuita y sin compromiso.
+            
+              Contacta ahora con nuestro equipo de abogados especializados en accidentes de tráfico en Granada. Te ayudamos a reclamar la indemnización que te corresponde.
           </p>
           <Link 
             href="/contacto" 
-            className="bg-transparent text-gray-600 dark:text-white border-2 border-gray hover:text-gray hover:bg-gray-300 dark:border-white hover:text-blue hover:bg-gray-100 px-8 py-3 rounded-lg text-lg font-semibold inline-block transition-colors"
+            className="bg-transparent text-gray-600 dark:text-white border-2 border-gray hover:text-gray hover:bg-gray-300 dark:border-white hover:text-blue  px-8 py-3 rounded-lg text-lg font-semibold inline-block transition-colors"
           >
             Contactar Ahora
           </Link>
         </div>
       </section>
+      
     </>
   );
 }
