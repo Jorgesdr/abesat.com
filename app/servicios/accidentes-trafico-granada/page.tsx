@@ -14,27 +14,30 @@ export const metadata = {
 };
 
 export default function AccidentesTraficoPage() {
-  <Head>
-  <script type="application/ld+json" dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "LegalService",
-      "name": "ABESAT Abogados",
-      "image": "https://abesat.com/images/abesatico.webp",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Calle Recogidas 8",
-        "addressLocality": "Granada",
-        "addressRegion": "GR",
-        "postalCode": "18009",
-        "addressCountry": "ES"
-      },
-      "url": "https://abesat.com/accidentes-trafico-granada",
-      "telephone": "+34 600 000 000",
-      "priceRange": "€€"
-    })
-  }} />
-</Head>
+  ;;<Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LegalService",
+          name: "ABESAT Abogados",
+          image: "https://abesat.com/images/abesatico.webp",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Plaza del Campillo número 5, 4 J",
+            addressLocality: "Granada",
+            addressRegion: "GR",
+            postalCode: "18009",
+            addressCountry: "ES",
+          },
+          url: "https://abesat.com/accidentes-trafico-granada",
+          telephone: "+34 696 36 90 30",
+          priceRange: "€€",
+        }),
+      }}
+    />
+  </Head>
   return (
     <main>
       {/* Hero Section */}
