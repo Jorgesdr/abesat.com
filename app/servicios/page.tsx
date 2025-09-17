@@ -1,61 +1,79 @@
-import Link from "next/link";
-import Image from "next/image";
-import { notFound } from 'next/navigation';
+//servicios
+import Link from "next/link"
+import Image from "next/image"
+import { notFound } from "next/navigation"
+
+const oldmetadata = {
+  title:
+    "Abogado Accidente Tráfico Granada | Especialistas en Indemnizaciones | ABESAT",
+  description:
+    "Abogados especializados en accidentes de tráfico en Granada. Reclamamos tu indemnización máxima. Consulta gratuita con abogado de tráfico en Granada.",
+}
 
 export const metadata = {
-  title: "Servicios - ABESAT Abogados Accidentes Tráfico Granada",
-  description: "Servicios especializados en accidentes de tráfico en Granada. Indemnizaciones, defensa legal y asesoramiento personalizado.",
-};
+  title:
+    "Abogados Tráfico Granada 🚗 Especialistas en Accidentes e Indemnizaciones | ABESAT",
+  description:
+    "Abogados ESPECIALIZADOS en accidentes de tráfico en GRANADA. ⭐ Reclamamos tu INDEMNIZACIÓN MÁXIMA. Consulta GRATUITA. Defensa penal. 15 años experiencia.",
+}
 
 export default function ServiciosPage() {
   const servicios = [
     {
       title: "Reclamación de Indemnizaciones",
-      description: "Gestionamos tu reclamación para obtener la máxima compensación por daños personales y materiales.",
+      description:
+        "Gestionamos tu reclamación para obtener la máxima compensación por daños personales y materiales.",
       icon: "💰",
       link: "/servicios/indemnizaciones",
     },
     {
-      title: "Accidentes de Tráfico",
-      description: "Asesoramiento legal especializado en todo tipo de accidentes de circulación en Granada.",
+      title: "Accidentes de Tráfico Granada",
+      description:
+        "Asesoramiento legal especializado en  accidentes de tráfico en Granada. Reclamamos tu indemnización MÁXIMA",
       icon: "🚗",
       link: "/servicios/accidentes-trafico-granada",
     },
     {
       title: "Lesiones y Daños Corporales",
-      description: "Defensa de tus derechos cuando sufres lesiones por accidente de tráfico.",
+      description:
+        "Defensa de tus derechos cuando sufres lesiones por accidente de tráfico.",
       icon: "🏥",
       link: "/servicios/lesiones",
     },
     {
       title: "Defensa en Procedimientos Penales",
-      description: "Asistencia legal en casos con responsabilidad penal derivada de accidentes.",
+      description:
+        "Asistencia legal en casos con responsabilidad penal derivada de accidentes.",
       icon: "⚖️",
       link: "/servicios/defensa-penal",
     },
     {
       title: "Recursos y Reclamaciones",
-      description: "Interponemos recursos cuando la indemnización ofrecida no es justa.",
+      description:
+        "Interponemos recursos cuando la indemnización ofrecida no es justa.",
       icon: "📄",
       link: "/servicios/recursos",
     },
     {
       title: "Asesoramiento a Víctimas",
-      description: "Apoyo integral a víctimas de accidentes de tráfico y sus familias.",
+      description:
+        "Apoyo integral a víctimas de accidentes de tráfico y sus familias.",
       icon: "🤝",
       link: "/servicios/asesoramiento-victimas",
     },
-  ];
-  
+  ]
 
   return (
     <main>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-primary-600 to-primary-800 dark:text-white py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Nuestros Servicios</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            Nuestros Servicios
+          </h1>
           <p className="text-xl max-w-3xl mx-auto">
-            Especialistas en derecho de tráfico y accidentes en Granada. Ofrecemos soluciones legales personalizadas para cada caso.
+            Especialistas en derecho de tráfico y accidentes en Granada.
+            Ofrecemos soluciones legales personalizadas para cada caso.
           </p>
         </div>
       </section>
@@ -65,14 +83,16 @@ export default function ServiciosPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {servicios.map((servicio, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
                 <div className="text-4xl mb-4">{servicio.icon}</div>
                 <h3 className="text-xl font-semibold mb-3">{servicio.title}</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">{servicio.description}</p>
-                <Link 
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  {servicio.description}
+                </p>
+                <Link
                   href={servicio.link}
                   className="text-primary-600 dark:text-primary-400 hover:underline font-medium"
                 >
@@ -87,52 +107,66 @@ export default function ServiciosPage() {
       {/* Proceso de Trabajo */}
       <section className="py-16 bg-gray-100 dark:bg-gray-900">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Nuestro Proceso de Trabajo</h2>
-          
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Nuestro Proceso de Trabajo
+          </h2>
+
           <div className="relative">
             <div className="hidden lg:block absolute left-1/2 top-0 h-full w-1 bg-primary-500 transform -translate-x-1/2"></div>
-            
+
             <div className="space-y-12 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-8">
               {[
                 {
                   title: "1. Evaluación del Caso",
-                  description: "Analizamos tu situación en una primera consulta gratuita.",
+                  description:
+                    "Analizamos tu situación en una primera consulta gratuita.",
                   icon: "📋",
                 },
                 {
                   title: "2. Recopilación de Pruebas",
-                  description: "Recogemos toda la documentación necesaria para tu reclamación.",
+                  description:
+                    "Recogemos toda la documentación necesaria para tu reclamación.",
                   icon: "🔍",
                 },
                 {
                   title: "3. Negociación con Aseguradoras",
-                  description: "Nos encargamos de negociar con las compañías por ti.",
+                  description:
+                    "Nos encargamos de negociar con las compañías por ti.",
                   icon: "💬",
                 },
                 {
                   title: "4. Reclamación Judicial si es Necesario",
-                  description: "Si no hay acuerdo, llevamos tu caso a los tribunales.",
+                  description:
+                    "Si no hay acuerdo, llevamos tu caso a los tribunales.",
                   icon: "⚖️",
                 },
                 {
                   title: "5. Cobro de Indemnización",
-                  description: "Te ayudamos a recibir el importe íntegro de tu compensación.",
+                  description:
+                    "Te ayudamos a recibir el importe íntegro de tu compensación.",
                   icon: "💰",
                 },
                 {
                   title: "6. Seguimiento Post-Indemnización",
-                  description: "Seguimos disponibles para cualquier consulta posterior.",
+                  description:
+                    "Seguimos disponibles para cualquier consulta posterior.",
                   icon: "🔄",
                 },
               ].map((paso, index) => (
-                <div 
-                  key={index} 
-                  className={`relative ${index % 2 === 0 ? 'lg:text-right lg:pr-8' : 'lg:text-left lg:pl-8 lg:mt-32'}`}
+                <div
+                  key={index}
+                  className={`relative ${
+                    index % 2 === 0
+                      ? "lg:text-right lg:pr-8"
+                      : "lg:text-left lg:pl-8 lg:mt-32"
+                  }`}
                 >
                   <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md">
                     <div className="text-3xl mb-3">{paso.icon}</div>
                     <h3 className="text-xl font-semibold mb-2">{paso.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300">{paso.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300">
+                      {paso.description}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -141,15 +175,50 @@ export default function ServiciosPage() {
         </div>
       </section>
 
+      {/* Nueva Sección - Zona Granada */}
+      <section className="py-16 bg-white dark:bg-gray-800">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-6">
+            Abogados de Tráfico en Granada y Provincia
+          </h2>
+          <p className="text-xl mb-8 max-w-3xl mx-auto">
+            Atendemos casos en toda la provincia de Granada: Motril, Loja,
+            Armilla, Albolote, Maracena, Las Gabias, Guadix, Baza, y resto de
+            municipios granadinos.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+            {[
+              "Granada Capital",
+              "Motril",
+              "Loja",
+              "Armilla",
+              "Albolote",
+              "Maracena",
+              "Guadix",
+              "Baza",
+            ].map((ciudad, index) => (
+              <div
+                key={index}
+                className="bg-gray-100 dark:bg-gray-700 p-3 rounded"
+              >
+                ✓ Abogados {ciudad}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="bg-primary-600 dark:text-white py-12">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">¿Necesitas un abogado especializado en accidentes?</h2>
+          <h2 className="text-3xl font-bold mb-6">
+            ¿Necesitas un abogado especializado en accidentes?
+          </h2>
           <p className="text-xl mb-8 max-w-3xl mx-auto">
             Contacta con nosotros para una consulta gratuita y sin compromiso.
           </p>
-          <Link 
-            href="/contacto" 
+          <Link
+            href="/contacto"
             className="bg-transparent dark:border-white border-2 hover:bg-gray-300 hover:text-blue px-8 py-3 rounded-lg text-lg font-semibold inline-block transition-colors"
           >
             Contactar Ahora
@@ -157,5 +226,5 @@ export default function ServiciosPage() {
         </div>
       </section>
     </main>
-  );
+  )
 }

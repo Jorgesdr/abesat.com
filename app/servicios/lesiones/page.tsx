@@ -1,3 +1,4 @@
+//lesiones
 import Link from "next/link";
 
 export const metadata = {
