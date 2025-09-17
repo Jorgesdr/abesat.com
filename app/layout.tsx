@@ -4,6 +4,7 @@ import './globals.css'
 import ThemeProvider from "./theme/theme-provider";
 import Header from './components/Header'
 import Footer from './components/Footer'
+import { Analytics } from "@vercel/analytics/next"
 
 import BannerCookies from './components/BannerCookies';
 
@@ -41,10 +42,18 @@ export default  async function RootLayout({
   
   return (
     <html lang="es" suppressHydrationWarning>
-      <body className={`${inter.className} bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100`}>
-       <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <body
+        className={`${inter.className} bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Header />
           <main className="min-h-[calc(100vh-160px)]">{children}</main>
+          <Analytics />
           <Footer />
           <BannerCookies />
         </ThemeProvider>
