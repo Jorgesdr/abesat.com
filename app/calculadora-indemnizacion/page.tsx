@@ -128,3 +128,9 @@ export default function CalculadoraIndemnizacionPage() {
     </>
   )
 }
+
+/* 
+https://www.amazon.es/HP-15-fd0188ns-Ordenador-port%C3%A1til-Operativo/dp/B0DK5W6TNY?th=1&linkCode=ll1&tag=app0fb0-21&linkId=fd6caff25425d497b740eccdccebaf57&language=es_ES&ref_=as_li_ss_tl
+https://www.amazon.es/HP-15-fd0188ns-Ordenador-port%C3%A1til-Operativo/dp/B0DK5W6TNY?th=1&ref_=nav_signin
+https://www.amazon.es/Libin-Pantalones-senderismo-pantalones-entrenamiento/dp/B08RYPNLG9?crid=H3L28ULBFFMP&dib=eyJ2IjoiMSJ9.0-W0AAKG4ZAi6IW1Br6XGDFPsqXJXGlhqySOmQnaT5E7TD0pggiTsdwOiD4erKqnvKKgbCySS5Geo3ONZmzePK5GEE7lqHP1dtov1kgJgA-7ecFoAALLDo9b6ktxN_1SYpLUdbSZ8rYiNPsrd6FT2cnQ-I7X0u-liYlK3PPawjlnqHuZz3IcYR6aiwYKKqskulDyCONxsQgaLE2ifZSebo96isXgPE0wrWlaVCbVv-yLyYnrLreuSBH3SauW7pSqS2KdUeifjg_NBIlVV_0eiLHOXpMqMdQF79YAyqQYQnM.em6k6_N9fV1jiSC8GmACkrKV_eHduK7V8iYgWnS7FV8&dib_tag=se&keywords=pantalon%2Bmonta%C3%B1a%2Bmujer&qid=1758210647&s=sports&sprefix=pantao%2Csporting%2C71&sr=1-5&th=1&psc=1&linkCode=ll1&tag=app0fb0-21&linkId=83f9105f3db9713f3f175c08223bc6db&language=es_ES&ref_=as_li_ss_tl
+https://www.amazon.es/Libin-Pantalones-senderismo-pantalones-entrenamiento/dp/B08RYPNLG9/ref=sr_1_5?crid=H3L28ULBFFMP&dib=eyJ2IjoiMSJ9.0-W0AAKG4ZAi6IW1Br6XGDFPsqXJXGlhqySOmQnaT5E7TD0pggiTsdwOiD4erKqnvKKgbCySS5Geo3ONZmzePK5GEE7lqHP1dtov1kgJgA-7ecFoAALLDo9b6ktxN_1SYpLUdbSZ8rYiNPsrd6FT2cnQ-I7X0u-liYlK3PPawjlnqHuZz3IcYR6aiwYKKqskulDyCONxsQgaLE2ifZSebo96isXgPE0wrWlaVCbVv-yLyYnrLreuSBH3SauW7pSqS2KdUeifjg_NBIlVV_0eiLHOXpMqMdQF79YAyqQYQnM.em6k6_N9fV1jiSC8GmACkrKV_eHduK7V8iYgWnS7FV8&dib_tag=se&keywords=pantalon%2Bmonta%C3%B1a%2Bmujer&qid=1758210647&s=sports&sprefix=pantao%2Csporting%2C71&sr=1-5&th=1&psc=1 */

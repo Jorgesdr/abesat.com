@@ -1,240 +1,366 @@
 "use client"
-import Link from "next/link"
 import { useState } from "react"
+import baremo from "../../data/baremo2025.json" // JSON con tabla completa
+
+type ResultadoDesglose = {
+  temporales: number
+  intervenciones: number
+  secuelas: number
+  gastoEmergente: number
+  lucroCesante: number
+  complementos: number
+  subtotal: number
+  factorActualizacion: number
+  total: number
+}
 
 export default function Calculator() {
-  const [diasCuracion, setDiasCuracion] = useState("")
-  const [tipoSecuela, setTipoSecuela] = useState("")
-  const [gastosMedicos, setGastosMedicos] = useState("")
-  const [resultado, setResultado] = useState<number | null>(null)
+  const [edad, setEdad] = useState<number>(35)
+  const [diasBasico, setDiasBasico] = useState<number>(0)
+  const [diasModerado, setDiasModerado] = useState<number>(0)
+  const [diasGrave, setDiasGrave] = useState<number>(0)
+  const [diasMuyGrave, setDiasMuyGrave] = useState<number>(0)
+  const [intervenciones, setIntervenciones] = useState<number>(0)
+  const [puntosSecuela, setPuntosSecuela] = useState<number>(0)
+  const [gastosActuales, setGastosActuales] = useState<number>(0)
+  const [gastosFuturos, setGastosFuturos] = useState<number>(0)
+  const [ingresosAnuales, setIngresosAnuales] = useState<number>(0)
+  const [diasIncapacidad, setDiasIncapacidad] = useState<number>(0)
+  const [fechaAccidente, setFechaAccidente] = useState<string>(
+    new Date().toISOString().slice(0, 10)
+  )
+  const [fechaDeterminacion, setFechaDeterminacion] = useState<string>(
+    new Date().toISOString().slice(0, 10)
+  )
+  const [resultado, setResultado] = useState<ResultadoDesglose | null>(null)
 
-  const calcularIndemnizacion = () => {
-    // Validar datos
-    if (!diasCuracion || !tipoSecuela) {
-      alert(
-        "Por favor, complete los campos obligatorios (días de curación y tipo de secuela)"
-      )
-      return
+  // Función para buscar valor de puntos según edad en el JSON de baremo
+  function buscarValorPuntosEdad(edad: number, puntos: number) {
+    const edades: number[] = (baremo as any).tabla_puntos_por_edad.edades
+    const puntosCols: number[] = (baremo as any).tabla_puntos_por_edad.puntos
+    const matriz: number[][] = (baremo as any).tabla_puntos_por_edad.matriz
+
+    // Buscar fila más próxima según edad
+    let filaIndex = 0
+    for (let i = 0; i < edades.length; i++) {
+      if (edad <= edades[i]) {
+        filaIndex = i
+        break
+      }
+      filaIndex = Math.min(i, matriz.length - 1)
     }
 
-    const dias = parseInt(diasCuracion)
-    const gastos = gastosMedicos ? parseInt(gastosMedicos) : 0
-
-    // Cálculo según baremo aproximado (valores orientativos)
-    let indemnizacion = 0
-
-    // Base por días de curación (aproximadamente 30€/día para los primeros 30 días)
-    indemnizacion += Math.min(dias, 30) * 30
-
-    // Días restantes a menor tasa
-    if (dias > 30) {
-      indemnizacion += (dias - 30) * 20
+    // Buscar columna exacta o aproximar
+    const maxPuntosCol = puntosCols[puntosCols.length - 1]
+    if (puntos <= maxPuntosCol) {
+      const colIndex = puntosCols.indexOf(puntos)
+      if (colIndex >= 0 && matriz[filaIndex] && matriz[filaIndex][colIndex]) {
+        return matriz[filaIndex][colIndex]
+      }
     }
 
-    // Añadir por secuelas
-    switch (tipoSecuela) {
-      case "leve":
-        indemnizacion += 1000 // Secuelas leves
-        break
-      case "moderada":
-        indemnizacion += 5000 // Secuelas moderadas
-        break
-      case "grave":
-        indemnizacion += 15000 // Secuelas graves
-        break
-      default:
-        // No añadir nada para "no secuelas"
-        break
-    }
-
-    // Añadir gastos médicos
-    indemnizacion += gastos
-
-    setResultado(indemnizacion)
+    // Aproximación proporcional
+    const ultimaCol = matriz[filaIndex][matriz[filaIndex].length - 1]
+    const factor = puntos / matriz[filaIndex].length
+    return Math.round(ultimaCol * factor)
   }
 
-  const resetearCalculadora = () => {
-    setDiasCuracion("")
-    setTipoSecuela("")
-    setGastosMedicos("")
+  const calcularIndemnizacion = () => {
+    // 1. Lesiones temporales
+    const tarifa = (baremo as any).dias
+    const temporales =
+      diasBasico * tarifa.basico +
+      diasModerado * tarifa.moderado +
+      diasGrave * tarifa.grave +
+      diasMuyGrave * tarifa.muy_grave
+
+    // 2. Intervenciones
+    const intMin = (baremo as any).intervenciones.min
+    const intMax = (baremo as any).intervenciones.max
+    const intervencionesTotal = intervenciones * ((intMin + intMax) / 2)
+
+    // 3. Secuelas
+    const valorSecuelas = buscarValorPuntosEdad(edad, puntosSecuela)
+
+    // 4. Daño emergente
+    const gastoEmergente = gastosActuales + gastosFuturos
+
+    // 5. Lucro cesante
+    const lucroPorDias = (ingresosAnuales / 365) * diasIncapacidad
+
+    // 6. Complementos
+    let complementos = 0
+    const umbrales = (baremo as any).umbrales
+    if (puntosSecuela >= umbrales.puntaje_estetico) {
+      complementos += 12192.76
+    }
+    if (puntosSecuela >= umbrales.puntaje_psicofisico_indicador) {
+      complementos += 24385.53
+    }
+
+    const subtotal =
+      temporales +
+      intervencionesTotal +
+      valorSecuelas +
+      gastoEmergente +
+      lucroPorDias +
+      complementos
+
+    // 7. Factor de actualización (Art. 40)
+    const fa = (baremo as any).actualizacion["2025"] || 1
+    const yearDet = new Date(fechaDeterminacion).getFullYear()
+    const yearAcc = new Date(fechaAccidente).getFullYear()
+    let factor = yearDet >= 2025 && yearAcc <= 2025 ? fa : 1
+
+    const total = Math.round(subtotal * factor)
+
+    setResultado({
+      temporales: Math.round(temporales),
+      intervenciones: Math.round(intervencionesTotal),
+      secuelas: Math.round(valorSecuelas),
+      gastoEmergente: Math.round(gastoEmergente),
+      lucroCesante: Math.round(lucroPorDias),
+      complementos: Math.round(complementos),
+      subtotal: Math.round(subtotal),
+      factorActualizacion: factor,
+      total,
+    })
+  }
+
+  const reset = () => {
+    setEdad(35)
+    setDiasBasico(0)
+    setDiasModerado(0)
+    setDiasGrave(0)
+    setDiasMuyGrave(0)
+    setIntervenciones(0)
+    setPuntosSecuela(0)
+    setGastosActuales(0)
+    setGastosFuturos(0)
+    setIngresosAnuales(0)
+    setDiasIncapacidad(0)
     setResultado(null)
   }
 
   return (
-    <div className="container mx-auto px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg  mb-8">
-          <h2 className="text-2xl font-bold mb-4">
-            Calcula tu indemnización en 3 pasos
-          </h2>
-          <p className=" mb-6">
-            Completa los siguientes datos para obtener una estimación de tu
-            indemnización según el baremo legal vigente.
-          </p>
+    <div className="max-w-4xl mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-4">Calculadora Baremo 2025</h1>
 
-          {/* Formulario de Calculadora */}
-          <form className="space-y-6">
-            {/* Días de curación */}
-            <div>
-              <label className="block text-lg font-medium mb-2">
-                1. Días de curación (tiempo de recuperación)
-              </label>
-              <input
-                type="number"
-                min="1"
-                max="365"
-                value={diasCuracion}
-                onChange={(e) => setDiasCuracion(e.target.value)}
-                placeholder="Ej: 30 días"
-                className="dark:bg-gray-800 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              />
-              <p className="text-sm  mt-1">
-                Número de días que has estado en tratamiento médico
-              </p>
-            </div>
-
-            {/* Secuelas */}
-            <div>
-              <label className="block text-lg font-medium mb-2">
-                2. ¿Tienes secuelas permanentes?
-              </label>
-              <select
-                value={tipoSecuela}
-                onChange={(e) => setTipoSecuela(e.target.value)}
-                className="w-full p-3 border border-gray-300 rounded-lg dark:bg-gray-800 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              >
-                <option value="">Selecciona una opción</option>
-                <option value="no">No tengo secuelas</option>
-                <option value="leve">Secuelas leves (hasta 5%)</option>
-                <option value="moderada">Secuelas moderadas (5-15%)</option>
-                <option value="grave">Secuelas graves (más de 15%)</option>
-              </select>
-            </div>
-
-            {/* Gastos médicos */}
-            <div>
-              <label className="block text-lg font-medium mb-2">
-                3. Gastos médicos y farmacéuticos (aproximadamente)
-              </label>
-              <input
-                value={gastosMedicos}
-                onChange={(e) => setGastosMedicos(e.target.value)}
-                type="number"
-                min="0"
-                placeholder="Ej: 500 €"
-                className="dark:bg-gray-800 w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              />
-            </div>
-
-            {/* Botón de calcular */}
-            <button
-              onClick={calcularIndemnizacion}
-              type="button"
-              className="bg-transparent border-2 border-primary-600 text-primary-600 px-4 py-3 rounded-lg font-medium inline-block w-full text-center hover:bg-primary-50 cursor-pointer"
-            >
-              🧮 Calcular Mi Indemnización
-            </button>
-          </form>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label htmlFor="fechaAccidente" className="block font-medium mb-1">
+            Fecha del accidente
+          </label>
+          <input
+            type="date"
+            value={fechaAccidente}
+            onChange={(e) => setFechaAccidente(e.target.value)}
+            className="w-full p-2 border rounded"
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="fechaDeterminacion"
+            className="block font-medium mb-1"
+          >
+            Fecha de determinación
+          </label>
+          <input
+            type="date"
+            value={fechaDeterminacion}
+            onChange={(e) => setFechaDeterminacion(e.target.value)}
+            className="w-full p-2 border rounded"
+          />
+        </div>
+        <div>
+          <label htmlFor="edad" className="block font-medium mb-1">
+            Edad
+          </label>
+          <input
+            type="number"
+            value={edad}
+            onChange={(e) => setEdad(parseInt(e.target.value || "0"))}
+            placeholder="Edad"
+            className="w-full p-2 border rounded"
+          />
+        </div>
+        <div>
+          <label htmlFor="diasBasico" className="block font-medium mb-1">
+            Días con perjuicio básico
+          </label>
+          <input
+            type="number"
+            value={diasBasico}
+            onChange={(e) => setDiasBasico(parseInt(e.target.value || "0"))}
+            placeholder="Días perjuicio básico"
+            className="w-full p-2 border rounded"
+          />
+        </div>
+        <div>
+          <label htmlFor="diasModerado" className="block font-medium mb-1">
+            Días con perjuicio moderado
+          </label>
+          <input
+            type="number"
+            value={diasModerado}
+            onChange={(e) => setDiasModerado(parseInt(e.target.value || "0"))}
+            placeholder="Días perjuicio moderado"
+            className="w-full p-2 border rounded"
+          />
+        </div>
+        <div>
+          <label htmlFor="diasGrave" className="block font-medium mb-1">
+            Días con perjuicio grave
+          </label>
+          <input
+            type="number"
+            value={diasGrave}
+            onChange={(e) => setDiasGrave(parseInt(e.target.value || "0"))}
+            placeholder="Días perjuicio grave"
+            className="w-full p-2 border rounded"
+          />
+        </div>
+        <div>
+          <label htmlFor="diasMuyGrave" className="block font-medium mb-1">
+            Días con perjuicio muy grave
+          </label>
+          <input
+            type="number"
+            value={diasMuyGrave}
+            onChange={(e) => setDiasMuyGrave(parseInt(e.target.value || "0"))}
+            placeholder="Días perjuicio muy grave"
+            className="w-full p-2 border rounded"
+          />
+        </div>
+        <div>
+          <label htmlFor="intervenciones" className="block font-medium mb-1">
+            Número de intervenciones quirúrgicas
+          </label>
+          <input
+            type="number"
+            value={intervenciones}
+            onChange={(e) => setIntervenciones(parseInt(e.target.value || "0"))}
+            placeholder="Intervenciones"
+            className="w-full p-2 border rounded"
+          />
+        </div>
+        <div>
+          <label htmlFor="puntosSecuela" className="block font-medium mb-1">
+            Puntos de secuela
+          </label>
+          <input
+            type="number"
+            value={puntosSecuela}
+            onChange={(e) => setPuntosSecuela(parseInt(e.target.value || "0"))}
+            placeholder="Puntos de secuela"
+            className="w-full p-2 border rounded"
+          />
+        </div>
+        <div>
+          <label htmlFor="gastosActuales" className="block font-medium mb-1">
+            Gastos actuales (€)
+          </label>
+          <input
+            type="number"
+            value={gastosActuales}
+            onChange={(e) =>
+              setGastosActuales(parseFloat(e.target.value || "0"))
+            }
+            placeholder="Gastos actuales (€)"
+            className="w-full p-2 border rounded"
+          />
+        </div>
+        <div>
+          <label htmlFor="gastosFuturos" className="block font-medium mb-1">
+            Gastos futuros (€)
+          </label>
+          <input
+            type="number"
+            value={gastosFuturos}
+            onChange={(e) =>
+              setGastosFuturos(parseFloat(e.target.value || "0"))
+            }
+            placeholder="Gastos futuros (€)"
+            className="w-full p-2 border rounded"
+          />
+        </div>
+        <div>
+          <label htmlFor="ingresosAnuales" className="block font-medium mb-1">
+            Ingresos anuales (€) (lucro cesante)
+          </label>
+          <input
+            type="number"
+            value={ingresosAnuales}
+            onChange={(e) =>
+              setIngresosAnuales(parseFloat(e.target.value || "0"))
+            }
+            placeholder="Ingresos anuales (€)"
+            className="w-full p-2 border rounded"
+          />
         </div>
 
-        {/* Resultado (inicialmente oculto) */}
-        {resultado !== null && (
-          <div className=" py-16 bg-white dark:bg-gray-800 border border-green-200 rounded-lg p-6 mb-8">
-            <h3 className="text-2xl font-bold text-green-800 mb-4">
-              Resultado estimado
-            </h3>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-green-700 mb-2">
-                {resultado.toLocaleString("es-ES")} €
-              </div>
-              <p className="text-green-600 mb-4">
-                Estimación basada en el baremo legal vigente
-              </p>
+        <div>
+          <label htmlFor="diasIncapacidad" className="block font-medium mb-1">
+            Días de incapacidad laboral
+          </label>
+          <input
+            type="number"
+            value={diasIncapacidad}
+            onChange={(e) =>
+              setDiasIncapacidad(parseInt(e.target.value || "0"))
+            }
+            placeholder="Días de incapacidad"
+            className="w-full p-2 border rounded"
+          />
+        </div>
+      </div>
 
-              <div className=" p-4 rounded-lg mt-4 text-left">
-                <h4 className="font-semibold mb-2">Desglose aproximado:</h4>
-                <ul className="text-sm space-y-1">
-                  <li>• Días de curación: {diasCuracion} días</li>
-                  <li>
-                    • Secuelas:{" "}
-                    {tipoSecuela === "no"
-                      ? "No"
-                      : tipoSecuela === "leve"
-                      ? "Leves"
-                      : tipoSecuela === "moderada"
-                      ? "Moderadas"
-                      : "Graves"}
-                  </li>
-                  {gastosMedicos && (
-                    <li>
-                      • Gastos médicos:{" "}
-                      {parseInt(gastosMedicos).toLocaleString("es-ES")} €
-                    </li>
-                  )}
-                </ul>
-              </div>
+      <div className="mt-6 flex gap-3">
+        <button
+          onClick={calcularIndemnizacion}
+          className="px-4 py-2 bg-blue-600 text-white rounded"
+        >
+          Calcular Indemnización
+        </button>
+        <button onClick={reset} className="px-4 py-2 border rounded">
+          Reiniciar
+        </button>
+      </div>
 
-              <p className="text-sm text-green-700 mt-4">
-                Esta es una estimación orientativa. Para un cálculo exacto,
-                contacta con nuestros abogados especialistas.
-              </p>
-
-              <button
-                onClick={resetearCalculadora}
-                className="mt-4 text-primary-600 hover:text-primary-800 font-medium"
-              >
-                ↺ Realizar otro cálculo
-              </button>
-            </div>
-            <div className="mt-8 container mx-auto px-4 text-center">
-              <h2 className="text-3xl font-bold mb-6">
-                ¿Necesitas una valoración exacta?
-              </h2>
-              <p className="text-xl mb-8 max-w-2xl mx-auto">
-                Nuestros abogados especialistas en indemnizaciones analizarán tu
-                caso gratuitamente
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/contacto"
-                  className="bg-transparent border-2 border-primary-600 text-primary-600 px-4 py-3 rounded-lg font-medium inline-block w-full text-center hover:bg-primary-50"
-                >
-                  📞 Consulta Gratuita
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Información importante */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-          <h3 className="text-xl font-bold text-blue-800 mb-4">
-            📋 Información importante
-          </h3>
-          <ul className="space-y-3 text-blue-700">
-            <li className="flex items-start">
-              <span className="text-blue-500 mr-2">•</span>
-              Esta calculadora proporciona una estimación orientativa basada en
-              el baremo de tráfico
+      {resultado && (
+        <div className="mt-6 p-4  border rounded">
+          <h2 className="text-xl font-semibold mb-3">Resultado estimado</h2>
+          <ul className="space-y-2">
+            <li>
+              • Lesiones temporales:{" "}
+              {resultado.temporales.toLocaleString("es-ES")} €
             </li>
-            <li className="flex items-start">
-              <span className="text-blue-500 mr-2">•</span>
-              La indemnización real puede variar según las circunstancias
-              específicas de tu caso
+            <li>
+              • Intervenciones quirúrgicas:{" "}
+              {resultado.intervenciones.toLocaleString("es-ES")} €
             </li>
-            <li className="flex items-start">
-              <span className="text-blue-500 mr-2">•</span>
-              Los cálculos incluyen daños personales, pero no daños materiales
-              del vehículo
+            <li>• Secuelas: {resultado.secuelas.toLocaleString("es-ES")} €</li>
+            <li>
+              • Daño emergente (gastos):{" "}
+              {resultado.gastoEmergente.toLocaleString("es-ES")} €
             </li>
-            <li className="flex items-start">
-              <span className="text-blue-500 mr-2">•</span>
-              Para una valoración exacta, necesitamos revisar tus informes
-              médicos completos
+            <li>
+              • Lucro cesante: {resultado.lucroCesante.toLocaleString("es-ES")}{" "}
+              €
+            </li>
+            <li>
+              • Complementos: {resultado.complementos.toLocaleString("es-ES")} €
+            </li>
+            <li className="font-bold">
+              Subtotal: {resultado.subtotal.toLocaleString("es-ES")} €
+            </li>
+            <li>• Factor de actualización: {resultado.factorActualizacion}</li>
+            <li className="text-2xl font-bold text-green-700">
+              Total estimado: {resultado.total.toLocaleString("es-ES")} €
             </li>
           </ul>
         </div>
-      </div>
+      )}
     </div>
   )
 }

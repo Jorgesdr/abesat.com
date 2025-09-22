@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "next/link"
 
 export default function Footer() {
   return (
@@ -84,10 +84,12 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
-          <p>
-            &copy; {new Date().getFullYear()} ABESAT - Abogados Accidentes de
-            Tráfico Granada. Todos los derechos reservados.
-          </p>
+          <div>
+            <p>
+              &copy; {new Date().getFullYear()} ABESAT - Abogados Accidentes de
+              Tráfico Granada. Todos los derechos reservados.
+            </p>
+          </div>
         </div>
       </div>
     </footer>
